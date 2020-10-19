@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: none;
+            width: 300px;
+            height: 120px;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="msdkds">
+        <img src="./img/l1.png" alt="">
+        <img src="./img/l2.png" alt="">
+        <img src="./img/l3.jpg" alt="">
+        <img src="./img/l4.jpg" alt="">
+        <img src="./img/l5.png" alt="">
+        <img src="./img/l6.png" alt="">
+        <img src="./img/l7.png" alt="">
+        <img src="./img/l8.jpg" alt="">
+    </div>
+    <div>
+        <button class="aaa">点击开始</button>
+        <button class="bbb">点击结束</button>
+    </div>
+
+</body>
+<script>
+    var img = document.querySelectorAll('.msdkds img');
+
+    var aaa = document.querySelector('.aaa');
+    var bbb = document.querySelector('.bbb');
+
+    //让第一个显示
+    img[0].style = 'display: block;';
+
+    //点击开始
+    aaa.onclick = function () {
+        var nam = 0
+        // 定时器
+        var sdmkd = setInterval(function () {
+
+            //点击后禁用
+            aaa.disabled = true;
+
+            //干掉所有人，留下我自己
+            for (var i = 0; i < img.length; i++) {
+                img[i].style = 'display: nane;';
+            }
+
+            // 随机一个数
+            nam = Math.floor(Math.random() * img.length)
+
+            //添加当前的图片
+            img[nam].style = 'display: block;';
+
+
+       
+        }, 200)
+    }
+         //点击结束
+         bbb.onclick = function () {
+                setTimeout(function () {
+                    //点击停止
+                    clearInterval(sdmkd)
+
+                    //点击后可用
+                    aaa.disabled = false;
+                })
+            }
+</script>
+
+</html>
